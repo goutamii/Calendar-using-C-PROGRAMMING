@@ -1,0 +1,24 @@
+1. Include the standard input/output library `stdio.h`. 
+2. Define a function `isLeapYear` that takes an integer year as input and returns 1 if it's a leap 
+year, otherwise returns 0. 
+3. Define a function `getNumberOfDays` that takes integers `month` and `year` as input and 
+returns the number of days in the given month of the year. It considers leap years for February. 
+4. Define a function `printCalendar` that takes integers `month` and `year` as input and prints 
+the calendar for that month and year. 
+5. In the `main` function: 
+   - Declare integer variables `month` and `year`. 
+   - Prompt the user to enter the month and year (in MM YYYY format). 
+   - Read the values of `month` and `year` from the user. 
+   - Call the `printCalendar` function with `month` and `year` as arguments to print the calendar 
+for the given month and year. 
+6. The `printCalendar` function: 
+   - Calculates the starting day of the week for the given month and year using Zeller's 
+Congruence formula. 
+   - Prints the month and year. 
+   - Prints the days of the week headers (Su Mo Tu We Th Fr Sa). 
+   - Prints leading spaces for the first week. 
+   - Prints the days of the month, starting from 1. 
+   - Prints the remaining days of the month in subsequent weeks, up to the total number of days 
+in the month. 
+7. Compile and run the program. Enter the month and year when prompted to see the calendar 
+for that month and year. 
