@@ -1,0 +1,71 @@
+#include <stdio.h> 
+// Function to check if the given year is a leap year or not 
+int isLeapYear(int year) { 
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) 
+        return 1; 
+    else 
+        return 0; 
+} 
+ 
+// Function to get the number of days in a given month and year 
+int getNumberOfDays(int month, int year) { 
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; 
+ 
+    // If February and it's a leap year, return 29 
+    if (month == 2 && isLeapYear(year)) 
+        return 29; 
+    else 
+        return daysInMonth[month - 1]; 
+} 
+ 
+// Function to print the calendar for a given month and year 
+void printCalendar(int month, int year) { 
+    int i, j, day, totalDays; 
+    // Determine the starting day of the week for the given month and year (Zeller's Congruence) 
+    int startingDay = (1 + ((13 * (month + 1)) / 5) + year % 100 + (year % 100) / 4 + (year / 100) 
+/ 4 + 5 * (year / 100)) % 7; 
+ 
+    // Print month and year  
+    printf("    %d/%d\n", month, year); 
+    printf("Su Mo Tu We Th Fr Sa\n"); 
+ 
+    // Print leading spaces 
+    for (i = 0; i < startingDay; i++) 
+        printf("   "); 
+ 
+    totalDays = getNumberOfDays(month, year); 
+    day = 1; 
+ 
+    // Print the days of the month 
+    for (j = startingDay; j < 7; j++) { 
+        printf("%2d ", day); 
+        day++; 
+    } 
+ 
+    printf("\n"); 
+ 
+    // Print remaining days of the month 
+    for (i = 2; i <= totalDays / 7 + 1; i++) { 
+        for (j = 0; j < 7 && day <= totalDays; j++) { 
+            printf("%2d ", day); 
+            day++; 
+        } 
+        printf("\n"); 
+    } 
+} 
+ 
+int main() 
+{ 
+
+    int month, year; 
+ 
+    // Input month and year from user 
+    printf("Enter month and year (MM YYYY): "); 
+    scanf("%d %d", &month, &year); 
+ 
+    // Print calendar 
+    printCalendar(month, year); 
+ 
+    return 0; 
+} 
+  
